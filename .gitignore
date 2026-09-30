@@ -1,0 +1,4 @@
+# Your filled-in prompts (contain your bot token and family details)
+private/
+*.filled.txt
+.DS_Store
