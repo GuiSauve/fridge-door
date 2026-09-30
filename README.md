@@ -1,6 +1,6 @@
-# Family Org starter kit
+# fridge-door
 
-A small assistant that keeps two parents on top of school / kita (daycare) /
+The notes on your fridge door, handled for you. A starter kit for a small assistant that keeps two parents on top of school / kita (daycare) /
 after-school care / sports-club logistics. No server and no code to deploy.
 It runs as two scheduled Claude Code **routines** (cloud agents), and you talk
 to it through a Telegram bot.
