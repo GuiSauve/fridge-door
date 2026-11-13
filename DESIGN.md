@@ -107,5 +107,7 @@ and there are only five codes, so reading it is reliable.
 - Parent portals that only email "you have a new message" can be flagged but
   not summarized. Their content sits behind a login.
 - Screenshot reading can misread a cell. That's why the read-back exists.
-- Cron runs in UTC, so a fixed evening time shifts by an hour when the clocks
-  change unless you adjust it.
+- Cron runs in UTC, so a fixed evening time would shift by an hour when the
+  clocks change. The digest is therefore scheduled at both candidate UTC hours
+  and its first step exits unless it's the local digest hour — one extra,
+  near-empty run a day.

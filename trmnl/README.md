@@ -7,7 +7,7 @@ own device, or "bring your own device" hardware running TRMNL's software.
 ```
 Daily digest (18:00, step 9b) ──┐  digest + next 7 days
 Telegram intake (06:xx, step 0) ─┼─ webhook ──► private plugin ──► screen
-   …and after calendar changes ─┘  next 7 days + today       (checks hourly)
+   …and after calendar changes ─┘  next 7 days + today       (checks every 15 min)
 ```
 
 ```
@@ -33,8 +33,9 @@ Monday 16 Nov                  │ Due soon:
 
 1. **TRMNL account + device.** Register your screen and set the right device
    model (resolution matters). Recommended under *Battery & Sleep*: refresh
-   every 60 min, *Wait for the next update* on, sleep mode overnight with the
-   sleep screen **off** (the last screen stays visible).
+   every 15 min, *Wait for the next update* **off** (with a pushed plugin it
+   otherwise waits about an hour and can miss a push by minutes), sleep mode
+   overnight with the sleep screen **off** (the last screen stays visible).
 2. **Plugin.** Plugins → Private Plugin → strategy **Webhook**. Paste
    [`display.liquid`](display.liquid) as the *Full* markup. Copy its webhook URL
    into `{{TRMNL_WEBHOOK_URL}}` in both prompts and keep the optional display
@@ -42,7 +43,12 @@ Monday 16 Nov                  │ Due soon:
 3. **Playlist.** Keep only this plugin visible (hide the welcome screen).
 4. **Cloud environment.** Add `trmnl.com` to the allowlist next to
    `api.telegram.org`.
-5. **Language.** The dates are written by the routines (English by default);
+5. **Weather (optional).** Get a free API key at
+   [meteoblue](https://content.meteoblue.com/en/business-solutions/weather-apis)
+   (package `basic-day`), fill `{{METEOBLUE_API_KEY}}`, `{{LATITUDE}}`,
+   `{{LONGITUDE}}` and `{{ALTITUDE}}` (metres), and add `my.meteoblue.com` to
+   the allowlist. Otherwise delete the WEATHER RULES and the WEATHER lines.
+6. **Language.** The dates are written by the routines (English by default);
    change the label format in the prompts if you prefer another language.
 
 ## What the layout does
@@ -53,6 +59,11 @@ Monday 16 Nov                  │ Due soon:
   times in 24 h.
 - Right: the condensed digest, headed "📋 Digest · <when it was sent>";
   lines ending with ":" become bold section titles.
+- Top of the left column (optional): the weather, tomorrow's in the evening
+  and today's in the morning, with a clothes tip for the kids ("Hat and
+  gloves!"). A fixed script picks the tip from the forecast, so the wording
+  stays predictable; edit or translate the phrases in the WEATHER RULES (e.g.
+  alternate two languages by day for a bilingual family).
 - Under the digest: an optional quote of the day (`quote`, `quote_by`).
 - Bottom bar: battery level (`trmnl.device.percent_charged`, as of the last
   render).

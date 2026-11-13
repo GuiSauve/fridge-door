@@ -80,7 +80,7 @@ the templates in `routines/` directly if you plan to share your fork.
 
    | Routine | Schedule | Tools | Connectors |
    |---|---|---|---|
-   | Daily digest | once a day, e.g. `0 17 * * *` (19:00 in Berlin during summer time) | Bash | Claude Docs, Gmail, Google Calendar |
+   | Daily digest | twice, e.g. `0 16,17 * * *` — step 0 keeps only the run at `{{DIGEST_HOUR}}`:00 local time, so it stays put when the clocks change | Bash | Claude Docs, Gmail, Google Calendar |
    | Telegram intake | hourly, e.g. `17 * * * *` | Bash, Read | Claude Docs, Google Calendar |
 
    Both use the environment from step 6. **Read** lets the intake routine view
@@ -106,6 +106,8 @@ the templates in `routines/` directly if you plan to share your fork.
 | `{{CALENDAR_ID}}` | From step 3 | …@group.calendar.google.com |
 | `{{TRACKER_DOC_ID}}`, `{{TRACKER_TAB_ID}}` | From step 4 | — |
 | `{{TIMEZONE}}` | IANA timezone | Europe/Berlin |
+| `{{DIGEST_HOUR}}` | Local hour for the daily digest, two digits | 18 |
+| `{{METEOBLUE_API_KEY}}`, `{{LATITUDE}}`, `{{LONGITUDE}}`, `{{ALTITUDE}}` | Optional, only for weather on the display (see [trmnl/README.md](trmnl/README.md)). The key is **secret**. | 52.52, 13.40, 35 |
 | `{{TRMNL_WEBHOOK_URL}}` | Optional, only for the e-ink display: your private plugin's webhook URL. **Secret-ish**, anyone with it can change your screen. | https://trmnl.com/api/custom_plugins/… |
 
 The shift codes and times in the intake prompt (Day 05:00–14:00, Eve
@@ -119,7 +121,7 @@ other roster apps work too if you describe their screenshot layout.
   It only controls this one bot, not any personal account. Never commit a
   filled prompt; keep it in `private/`.
 - The cloud environment only allowlists `api.telegram.org` (plus `trmnl.com`
-  if you use the display), so a routine can't reach arbitrary sites.
+  and `my.meteoblue.com` if you use the display and weather), so a routine can't reach arbitrary sites.
 - Before sharing your fork, run `scripts/sanitize-check.sh path/to/denylist`,
   where the denylist is a private file with your family's names, IDs and
   domains, one per line. It also flags anything shaped like a bot token,

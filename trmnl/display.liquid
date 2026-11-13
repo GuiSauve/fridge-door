@@ -2,6 +2,7 @@
 <div class="layout layout--top layout--left" style="align-items: stretch;">
   <div style="display: flex; width: 100%; height: 100%; gap: 28px;">
     <div class="fo-col" style="flex: 1; min-width: 0; overflow: hidden;"><div class="fo-fit">
+      {% if weather and weather.icon %}<div style="margin-bottom: 0.8em; padding-bottom: 0.5em; border-bottom: 1px solid #000;"><div class="title title--small">{{ weather.icon }} {{ weather.label }} · {{ weather.min }}–{{ weather.max }}° · 💧 {{ weather.rain }}%</div>{% if weather.tip and weather.tip != "" %}<div class="content">👕 {{ weather.tip }}</div>{% endif %}</div>{% endif %}
       {% if week and week.size > 0 %}
         {% for d in week %}
           <div class="title title--small" style="{% unless forloop.first %}margin-top: 0.75em;{% endunless %}">{% if d.today %}Today · {% endif %}{{ d.label }}</div>
