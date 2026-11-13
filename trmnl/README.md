@@ -38,7 +38,7 @@ Monday 16 Nov                  │ Due soon:
 2. **Plugin.** Plugins → Private Plugin → strategy **Webhook**. Paste
    [`display.liquid`](display.liquid) as the *Full* markup. Copy its webhook URL
    into `{{TRMNL_WEBHOOK_URL}}` in both prompts and keep the optional display
-   steps (daily digest 9b + WEEK DATA RULES; intake 0, 7d + DISPLAY PUSH).
+   steps (daily digest 9b + WEEK DATA RULES; intake 2b, 7d + DISPLAY PUSH).
 3. **Playlist.** Keep only this plugin visible (hide the welcome screen).
 4. **Cloud environment.** Add `trmnl.com` to the allowlist next to
    `api.telegram.org`.
@@ -48,7 +48,9 @@ Monday 16 Nov                  │ Due soon:
 ## What the layout does
 
 - Left: today (always, even if empty: "Nothing planned"), then the next days
-  with events. Dates bold, events regular, times in 24 h.
+  with events or to-dos. To-dos come from the tracker's Open Action Items and
+  are marked 📝 (they never go on the calendar). Dates bold, entries regular,
+  times in 24 h.
 - Right: the condensed digest, headed "📋 Digest · <when it was sent>";
   lines ending with ":" become bold section titles.
 - Bottom bar: battery level (`trmnl.device.percent_charged`, as of the last
