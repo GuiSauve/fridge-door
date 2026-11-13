@@ -91,6 +91,13 @@ and there are only five codes, so reading it is reliable.
 - **Two versions of the same digest.** Telegram gets the full message; the
   screen gets an 11-line version with empty sections dropped, because a
   half-width e-ink column truncates silently.
+- **Our own calendar column, not a calendar plugin.** Off-the-shelf calendar
+  widgets show ~3 days, skip empty days and can't be styled. The routines
+  already read the calendar, so they push the next 7 days themselves, with
+  "today" always shown.
+- **Pushed, not polled.** The screen only changes when the routines push
+  (evening digest, morning refresh, calendar edits), so it can check in
+  hourly and sleep at night without missing anything.
 - **Short calendar titles help everywhere.** Details live in the event
   description, so titles fit one line on a phone, in the calendar and on the
   screen.
