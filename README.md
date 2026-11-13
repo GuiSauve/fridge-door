@@ -19,6 +19,9 @@ What it does once set up:
 - **Shift-work clash hints (optional).** If one parent works shifts, a
   screenshot of their roster becomes calendar events, and the digest warns
   about clashes like "evening shift vs. training at 16:00: who takes them?".
+- **E-ink display (optional).** Show the shared calendar and the latest digest
+  side by side on a [TRMNL](https://trmnl.com) screen in the hallway. See
+  [trmnl/README.md](trmnl/README.md).
 
 See [DESIGN.md](DESIGN.md) for why it's built this way.
 
@@ -103,6 +106,7 @@ the templates in `routines/` directly if you plan to share your fork.
 | `{{CALENDAR_ID}}` | From step 3 | …@group.calendar.google.com |
 | `{{TRACKER_DOC_ID}}`, `{{TRACKER_TAB_ID}}` | From step 4 | — |
 | `{{TIMEZONE}}` | IANA timezone | Europe/Berlin |
+| `{{TRMNL_WEBHOOK_URL}}` | Optional, only for the e-ink display: your private plugin's webhook URL. **Secret-ish**, anyone with it can change your screen. | https://trmnl.com/api/custom_plugins/… |
 
 The shift codes and times in the intake prompt (Day 05:00–14:00, Eve
 12:30–22:00, Nig 21:00–06:00) are examples. Change them to your partner's
@@ -114,8 +118,8 @@ other roster apps work too if you describe their screenshot layout.
 - Routines have no secrets store, so the bot token sits in the routine prompt.
   It only controls this one bot, not any personal account. Never commit a
   filled prompt; keep it in `private/`.
-- The cloud environment only allowlists `api.telegram.org`, so a routine can't
-  reach arbitrary sites.
+- The cloud environment only allowlists `api.telegram.org` (plus `trmnl.com`
+  if you use the display), so a routine can't reach arbitrary sites.
 - Before sharing your fork, run `scripts/sanitize-check.sh path/to/denylist`,
   where the denylist is a private file with your family's names, IDs and
   domains, one per line. It also flags anything shaped like a bot token,

@@ -84,6 +84,17 @@ and there are only five codes, so reading it is reliable.
   16:00: who takes them?" It only flags what it actually knows about. Plain
   school days aren't on the calendar, so they aren't guessed at.
 
+## E-ink display
+
+- **The display mirrors, it doesn't decide.** The digest routine already knows
+  what matters today; it just sends a second, condensed copy to the screen.
+- **Two versions of the same digest.** Telegram gets the full message; the
+  screen gets an 11-line version with empty sections dropped, because a
+  half-width e-ink column truncates silently.
+- **Short calendar titles help everywhere.** Details live in the event
+  description, so titles fit one line on a phone, in the calendar and on the
+  screen.
+
 ## Known limits
 
 - Parent portals that only email "you have a new message" can be flagged but
