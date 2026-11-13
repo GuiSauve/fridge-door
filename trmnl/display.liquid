@@ -16,6 +16,7 @@
     <div style="width: 2px; background: #000;"></div>
     <div class="fo-col" style="flex: 1; min-width: 0; overflow: hidden;"><div class="fo-fit">
       <div id="fo-digest" class="content" data-sent="{{ sent_at | escape }}" style="white-space: pre-line;">{{ body | strip | escape }}</div>
+      {% if quote and quote != "" %}<div class="description" style="margin-top: 1.4em; padding-top: 0.6em; border-top: 1px solid #000; font-style: italic;">“{{ quote | escape }}”{% if quote_by and quote_by != "" %} — {{ quote_by | escape }}{% endif %}</div>{% endif %}
     </div></div>
   </div>
 </div>

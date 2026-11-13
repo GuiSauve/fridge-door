@@ -53,6 +53,7 @@ Monday 16 Nov                  │ Due soon:
   times in 24 h.
 - Right: the condensed digest, headed "📋 Digest · <when it was sent>";
   lines ending with ":" become bold section titles.
+- Under the digest: an optional quote of the day (`quote`, `quote_by`).
 - Bottom bar: battery level (`trmnl.device.percent_charged`, as of the last
   render).
 - Text starts at 125% and each column shrinks itself (down to 85%) only when
